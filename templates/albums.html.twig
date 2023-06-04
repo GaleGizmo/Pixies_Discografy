@@ -1,0 +1,47 @@
+
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <h1 class="mt-5 mb-3 text-center">Discografía</h1>
+        <div class="row">
+            {% for album in albums %}
+            
+                <div class="col-md-3 mb-4">
+                    <div class="card p-2 m-2">
+                        <div class="card-body">
+                            <h5 class="card-title text-center">{{ album.titulo }}</h5>
+                                 {% if album.imagen is null %}
+                                 <img src="/assets/image/default.jpg" class="card-img-top">
+                                 {% else %}
+                                <img src="{{ album.imagen }}" class="card-img-top">
+                                 {% endif %}
+                                 {% if album.fecha_publicacion is not null %}
+                             <p class="card-text"> Fecha de publicación: {{ album.fecha_publicacion }}</p>                        
+                             {% endif %}
+                             {% if album.duracion is null %}
+                                <p class="card-text">Duración: Desconocida</p>
+                            {% else %}
+                                <p class="card-text">Duración: {{ album.duracion }} minutos</p>
+                            {% endif %}
+                            {% if album.sello is null %}
+                                <p class="card-text">Sello: Desconocido</p>
+                            {% else %}
+                                <p class="card-text">Sello: {{ album.sello }}</p>
+                            {% endif %}
+                             {% if album.productor is null %}
+                                <p class="card-text">Productor: Desconocido</p>
+                            {% else %}
+                                <p class="card-text">Productor: {{ album.productor }}</p>
+                            {% endif %}
+                        </div>
+                        <div class="d-flex justify-content-end">
+                           
+                            <a href="{{ path ('editAlbum', {'id':album.id}) }}" class="btn btn-primary ml-auto">Editar</a>
+                        </div>                   
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

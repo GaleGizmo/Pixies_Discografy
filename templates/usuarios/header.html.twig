@@ -1,0 +1,10 @@
+<div class="header-container position-fixed top-1 end-0 me-3 mt-3">
+  {% if app.user %}
+    <div class="user-info">
+      <span text-white>Hola </span><strong>{{ app.user.username }}</strong>
+    </div>
+    <a class="logout-btn text-decoration-none text-white" href="{{ path ('app_logout') }}">Cerrar sesión</a>
+  {% else %}
+    <a class="login-btn  text-decoration-none text-white" href="{{ path ('app_login') }}">Iniciar sesión</a>
+  {% endif %}
+</div>

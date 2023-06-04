@@ -1,0 +1,46 @@
+{% extends 'base.html.twig'%}
+
+{% block body%}
+
+{% form_theme AlbumForm 'bootstrap_5_layout.html.twig' %} 
+
+
+
+<div class="container my-4 width70">
+    <h2 class="text-center mt-4 ">Añadir Álbum</h2>
+
+    {{ form_start(AlbumForm, {'attr': {'class': 'needs-validation', 'novalidate': 'novalidate'}}) }}
+        <div class="form-group">
+            {{ form_label(AlbumForm.titulo, 'Título', {'label_attr': {'class': 'form-label'}}) }}
+            {{ form_widget(AlbumForm.titulo, {'attr': {'class': 'form-control'}}) }}
+        </div>
+       
+        <div class="form-group">
+            {{ form_label(AlbumForm.fecha_publicacion, 'Fecha de Publicación', {'label_attr': {'class': 'form-label'}}) }}
+            {{ form_widget(AlbumForm.fecha_publicacion, {'attr': {'class': 'form-control'}}) }}
+        </div>
+        <div class="form-group">
+            {{ form_label(AlbumForm.duracion, 'Duración', {'label_attr': {'class': 'form-label'}}) }}
+            {{ form_widget(AlbumForm.duracion, {'attr': {'class': 'form-control'}}) }}
+        </div>
+      
+
+        <div class="form-group">
+            {{ form_label(AlbumForm.sello, 'Sello', {'label_attr': {'class': 'form-label'}}) }}
+            {{ form_widget(AlbumForm.sello, {'attr': {'class': 'form-control'}}) }}
+        </div>
+        <div class="form-group">
+            {{ form_label(AlbumForm.productor, 'Productor', {'label_attr': {'class': 'form-label'}}) }}
+            {{ form_widget(AlbumForm.productor, {'attr': {'class': 'form-control'}}) }}
+        </div>
+       <div class="form-group">
+            {{ form_label(AlbumForm.ficheroImagen, 'Imagen del Album', {'label_attr': {'class': 'form-label'}}) }}
+            {{ form_widget(AlbumForm.ficheroImagen, {'attr': {'class': 'form-control'}}) }}
+        </div>
+        <div class="form-group d-flex justify-content-center mt-5">
+            {{ form_widget(AlbumForm.enviar, {'attr': {'class': 'btn btn-primary'}}) }}
+        </div>
+   {{ form_end(AlbumForm) }}
+</div>
+ 
+{% endblock %}

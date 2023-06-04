@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        <title>{% block title %}Pixies Realm{% endblock %}</title>
         <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
         {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
         {% block stylesheets %}
@@ -14,6 +14,22 @@
         {% endblock %}
     </head>
     <body>
-        {% block body %}{% endblock %}
+ {% if app.session.flashBag.has('error') %}
+        <div id="error-alert" class="fixed-top alert alert-danger text-center col-md-4 mx-auto" role="alert">
+            {{ app.session.flashBag.get('error')[0] }}
+        </div>
+        
+    {% endif %}
+    {% include 'barra.html.twig' %}
+    {% include 'usuarios/header.html.twig' %}
+        {% block body %}
+         <div class="d-flex justify-content-center">
+        <h1 class="text-center bienvenida shadow-sm mt-5 p-3">BIENVENIDO A LA WEB DE THE PIXIES</h1>
+       </div>
+        <div class="d-flex justify-content-center">
+        <img class="mt-5 " src="/assets/images/PixiesLogo.png" alt="logo Pixies">
+        </div>
+        {% endblock %}
+       
     </body>
 </html>

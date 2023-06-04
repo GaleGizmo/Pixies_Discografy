@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Log in!{% endblock %}
+
+{% block body %}
+<form method="post">
+    {% if error %}
+        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+    {% endif %}
+
+    {% if app.user %}
+        <div class="mb-3">
+            Has iniciado sesión como {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>
+        </div>
+    {% endif %}
+    <div class="width70">
+    <h1 class="h3 mb-3 mt-5 font-weight-normal text-center">Inicia sesión</h1>
+    <label for="inputUsername">Username</label>
+    <input type="text" value="{{ last_username }}" name="username" id="inputUsername" class="form-control mb-3" autocomplete="username" required autofocus>
+    <label for="inputPassword">Password</label>
+    <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
+
+    <input type="hidden" name="_csrf_token"
+           value="{{ csrf_token('authenticate') }}"
+    >
+
+    
+<div class="d-flex justify-content-center">
+    <button class="btn btn-lg btn-primary mt-5" type="submit">
+        Sign in
+    </button>
+    </div>
+    </div>
+</form>
+<div class="d-flex justify-content-center">
+<p class="mt-2">¿No tienes cuenta de usuario?<p>
+<a href="{{ path('new_user') }}" class="btn btn-link btn-secondary text-decoration-none text-white">Registrate</a>
+</div>
+{% endblock %}

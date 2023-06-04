@@ -3,3 +3,17 @@ controllers:
         path: ../src/Controller/
         namespace: App\Controller
     type: attribute
+listAlbums:
+    path: /list/albums
+    controller: App\Controller\AlbumPixiesController::listAlbums
+
+newAlbum:
+    path: /insert/album
+    controller: App\Controller\AlbumPixiesController::insertAlbum
+
+editAlbum:
+    path: /edit/album/{id}
+    controller: App\Controller\AlbumPixiesController::editAlbum
+contacto:
+    path: /contacto
+    controller: App\Controller\AlbumPixiesController::contacto
